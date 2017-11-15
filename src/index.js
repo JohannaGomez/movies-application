@@ -2,26 +2,32 @@ const $ = require('jquery');
 
 const {getMovies} = require('./api.js');
 
-getMovies().then((movies) => {
-    const $loading = $('#loading').hide();
-    $(document)
-        .ajaxStart(function () {
-            $loading.hide('body');
-        })
-        .ajaxStop(function () {
-            $loading.show('body');
+function displayMovies() {
+    getMovies().then((movies) => {
+        const $loading = $('#loading').hide();
+        $(document)
+            .ajaxStart(function () {
+                $loading.hide('body');
+            })
+            .ajaxStop(function () {
+                $loading.show('body');
+            });
+        // console.log('Here are all the movies:');
+        movies.forEach(({title, rating, id}) => {
+            console.log(`id#${id} - ${title} - rating: ${rating}`);
         });
-    // console.log('Here are all the movies:');
-    movies.forEach(({title, rating, id}) => {
-    console.log(`id#${id} - ${title} - rating: ${rating}`);
+        buildHtml(movies);
+        editMovies(movies);
+        deleteMovies(movies);
+    }).catch((error) => {
+        alert('Oh no! Something went wrong.\nCheck the console for details.')
+        console.log(error);
     });
-  buildHtml(movies);
-  editMovies(movies);
-  deleteMovies(movies);
-}).catch((error) => {
-  alert('Oh no! Something went wrong.\nCheck the console for details.')
-  console.log(error);
-});
+};
+
+displayMovies();
+
+
 
 
 
@@ -43,6 +49,7 @@ function buildHtml(arrObjs) {
 // =====================Event listener to show the form when clicked on Add movies===================
 $('#add_movies').click(function () {
     $('#addMovies').toggleClass('invisible');
+    displayMovies();
 });
 
 
@@ -92,26 +99,7 @@ function editMovies(arrObjs) {
         fetch(url, options)
             .then(() => {
 
-                getMovies().then((movies) => {
-                    const $loading = $('#loading').hide();
-                    $(document)
-                        .ajaxStart(function () {
-                            $loading.hide('body');
-                        })
-                        .ajaxStop(function () {
-                            $loading.show('body');
-                        });
-                    // console.log('Here are all the movies:');
-                    movies.forEach(({title, rating, id}) => {
-                        console.log(`id#${id} - ${title} - rating: ${rating}`);
-                    });
-                    buildHtml(movies);
-                    editMovies(movies);
-                    deleteMovies(movies);
-                }).catch((error) => {
-                    alert('Oh no! Something went wrong.\nCheck the console for details.')
-                    console.log(error);
-                });
+                displayMovies()
 
             })
             .catch(console.log("error for editing movies"));
@@ -138,8 +126,12 @@ function deleteMovies(arrObjs) {
             };
 
             fetch(url, options)
-                .then(console.log("fetch for editing movies"))
-                .catch(console.log("error for editing movies"));
+                .then(() => {
+
+                    displayMovies()
+
+                })
+                .catch(console.log("error for deleting movies"));
         })
     });
 };

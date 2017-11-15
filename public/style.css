@@ -1,6 +1,6 @@
-html, body {
-    height: 100%;
-}
+/*html, body {*/
+    /*height: 100%;*/
+/*}*/
 
 /*.container {*/
     /*position: relative;*/
@@ -11,13 +11,20 @@ html, body {
 
 .container {
     margin-top: 5%;
-    /*background-color: #1b6d85;*/
+
+}
+
+body {
+    background-image: url("/moviepic.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 
 table, thead, tbody, tr, th, td {
     border: 1px solid black;
     padding: 2%;
+    background-color: #9d9d9d;
 }
 
 
