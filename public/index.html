@@ -3,15 +3,139 @@
 <head>
     <meta charset="UTF-8" />
     <title>My Application</title>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="/style.css" />
+    <link rel="stylesheet" href="/bootstrap.css">
 </head>
-<body>
 
-    <div class="container">
-        <h1>Hello There!</h1>
-        <p>To get started, edit <code>src/index.js</code>.</p>
+<body>
+<!--container for nav bar-->
+<!--<div class="contaniner">-->
+    <!--<div class="row">-->
+        <!--<div class="col-lg-12">-->
+        <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+                    </button>
+                    <a class="navbar-brand page-scroll" href="#page-top">Movies and More</a>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a class="page-scroll" id="add_movies" href="#add_movies">Add a movie</a>
+                        </li>
+                        <!--<li>-->
+                            <!--<a class="page-scroll"  id="edit_movies" href="#edit_movies">Edit Movies</a>-->
+                        <!--</li>-->
+                        <!--<li>-->
+                            <!--<a class="page-scroll" id="delete_movies" href="#delete_movies">Delete Movies</a>-->
+                        <!--</li>-->
+                    </ul>
+                </div>
+                <!-- /.navbar-collapse -->
+            </div>
+            <!-- /.container-fluid -->
+        </nav>
+        <!--</div>-->
+    <!--</div>-->
+<!--</div>-->
+
+
+
+
+<!--container for list of movies-->
+<div class="container">
+    <div class="row">
+        <!--container for loading-->
+        <div class="col-lg-12">
+            <div id="loading">
+                <h1>Loading ........</h1>
+            </div>
+        </div>
+        <div class="col-lg-12">
+            <h1>Movie application</h1>
+            <table id="movies">
+                <thead id="moviesHeading">
+                <tr>
+                    <th>Movie</th>
+                    <th>Rating</th>
+                    <th>Id</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+                </thead>
+                <tbody id="insertMovies"></tbody>
+            </table>
+        </div>
+    </div>
+    <br>
+    <!--container for adding movies-->
+    <div class="row">
+        <div class="col-lg-12">
+            <div id="addMovies" class="invisible">
+                <form id="form_to_add_movies">
+                    <label>Movie</label>
+                    <input id="movie_name" type="text" name="movie_name" placeholder="Enter name of the movie here">
+                    <div>
+                        <label>How would you rate this movie?
+                            <select id="rating_value">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+                        </label>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <button class="btn btn-primary" id="addMovieBtn">
+                                Submit new movie
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <br>
     </div>
 
-    <script src="/main.js"></script>
+
+
+</div>
+
+
+<!--<div id="editMovieRow-${id}">-->
+    <!--<form id="form_to_edit_movies">-->
+        <!--<input id="edit_movie_name" type="text" placeholder="Edit movie here">-->
+        <!--<div>-->
+            <!--<label for="edit_movie_name">-->
+            <!--<select id="edit_rating_value">-->
+                <!--<option value="1">1</option>-->
+                <!--<option value="2">2</option>-->
+                <!--<option value="3">3</option>-->
+                <!--<option value="4">4</option>-->
+                <!--<option value="5">5</option>-->
+            <!--</select>-->
+            <!--</label>-->
+        <!--</div>-->
+        <!--<button id="submitEditBtn">-->
+            <!--Submit edition-->
+        <!--</button>-->
+    <!--</form>-->
+<!--</div>-->
+
+
+<script src="/main.js"></script>
+<script src="//code.jquery.com/jquery-2.2.4.min.js"></script>
+<script src="/bootstrap.js"></script>
+
 </body>
 </html>
