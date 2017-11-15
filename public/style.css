@@ -28,7 +28,7 @@ table, thead, tbody, tr, th, td {
 }
 
 
-th, tr, td {
+#movies-table th {
     text-align: center;
     height: 50px;
 }
