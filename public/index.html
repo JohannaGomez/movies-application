@@ -104,6 +104,36 @@
                 </form>
             </div>
         </div>
+    </div>
+
+    <!--container for editing movies-->
+    <div class="row">
+        <div class="col-lg-12">
+            <div id="editingMovies" class="invisible">
+                <form id="form_to_edit_movies">
+                    <label>Movie Name</label>
+                    <div id="print-edited-movies" type="text"></div>
+                    <div>
+                        <label>New rate for this movie?
+                            <select id="edit_rating_value">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+                        </label>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <button class="btn btn-primary" id="editingMovieBtn">
+                                Edit movie
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
         <br>
     </div>
 
@@ -112,25 +142,6 @@
 </div>
 
 
-<!--<div id="editMovieRow-${id}">-->
-    <!--<form id="form_to_edit_movies">-->
-        <!--<input id="edit_movie_name" type="text" placeholder="Edit movie here">-->
-        <!--<div>-->
-            <!--<label for="edit_movie_name">-->
-            <!--<select id="edit_rating_value">-->
-                <!--<option value="1">1</option>-->
-                <!--<option value="2">2</option>-->
-                <!--<option value="3">3</option>-->
-                <!--<option value="4">4</option>-->
-                <!--<option value="5">5</option>-->
-            <!--</select>-->
-            <!--</label>-->
-        <!--</div>-->
-        <!--<button id="submitEditBtn">-->
-            <!--Submit edition-->
-        <!--</button>-->
-    <!--</form>-->
-<!--</div>-->
 
 
 <script src="/main.js"></script>

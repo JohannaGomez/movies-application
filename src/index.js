@@ -11,7 +11,7 @@ getMovies().then((movies) => {
         .ajaxStop(function () {
             $loading.show('body');
         });
-    console.log('Here are all the movies:');
+    // console.log('Here are all the movies:');
     movies.forEach(({title, rating, id}) => {
     console.log(`id#${id} - ${title} - rating: ${rating}`);
     });
@@ -62,35 +62,39 @@ $('#addMovieBtn').click(function () {
         .catch(console.log("error for adding movies"));
 });
 
-// ==================================Edit movie
+// ================================== Function to bring the movies to edition ==============================
+
 function editMovies(arrObjs) {
-    var arrObjsHtmlEditMovies = "";
+    var editHtml = "";
     arrObjs.forEach(function (movie, index, array) {
         const {title, rating, id} = movie;
         $(`#editMovieBtn${movie.id}`).click(function () {
-            console.log("clicking on edit movies: " + id);
-            arrObjsHtmlEditMovies += `<div id="editMovieRow-${movie.id}">
-                    <form id="form_to_edit_movies">
-                    <input id="edit_movie_name" type="text" placeholder="Edit movie here">
-                    <div>
-                    <label for="edit_movie_name">
-                    <select id="edit_rating_value">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    </select>
-                    </label>
-                    </div>
-                    <button id="submitEditBtn">
-                    Submit edition
-                </button>
-                </form>
-                </div>`
+            $('#editingMovies').toggleClass('invisible');
+            editHtml = `<input id="edit_movie_name" type="text" value="${movie.title}">  Rating: ${movie.rating}<div id="tempID">${movie.id}</div>`;
+            // console.log(editHtml);
+            $("#print-edited-movies").html(editHtml);
         });
-        $(`#editMovieRow-${movie.id}`).html(arrObjsHtmlEditMovies);
+
     });
+    $("#editingMovieBtn").click(function () {
+        console.log($('#edit_movie_name').val());
+        // const moviePut = {title: $('#edit_movie_name').val() , rating: $('#edit_rating_value').val() };
+        // const id = $('#tempID').html();
+        // console.log(moviePut);
+        // const url = `/api/movies/${id}`;
+        // const options = {
+        //     method: 'PUT',
+        //     headers: {
+        //         'Content-Type': 'application/json',
+        //     },
+        //     body: JSON.stringify(moviePut)
+        // };
+        //
+        // fetch(url, options)
+        //     .then(console.log("fetch for editing movies"))
+        //     .catch(console.log("error for editing movies"));
+    })
+
 };
 
 
@@ -98,34 +102,6 @@ function editMovies(arrObjs) {
 
 
 
-// $('#editMovieBtn${movie.id}').click(function () {
-//     console.log("clicking on edit movies");
-
-    // $(button name ${element.id).click
-
-    // $('tr').click(function (e) {
-    //     $(this).css("background-color", "blue");
-    //     console.log(e.currentTarget.id);
-    //     const movieId = e.currentTarget.id;
-    //     const newNameeOfMovie = prompt("Edit name of the movie");
-    //     const newRating = prompt("New rating of the movie");
-    //
-    // });
-    //
-    // // const moviePost = {title: $('#movie_name').val() , rating: $('#rating_value').val() };
-    // const url = '/api/movies{movies/id}';
-    // const options = {
-    //     method: 'PUT',
-    //     headers: {
-    //         'Content-Type': 'application/json',
-    //     },
-    //     body: JSON.stringify()
-    // };
-    //
-    // fetch(url, options)
-    //     .then(console.log("fetch for editing movies"))
-    //     .catch(console.log("error for editing movies"));
-// });
 
 
 
