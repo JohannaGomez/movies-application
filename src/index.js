@@ -1,7 +1,10 @@
+// ========================= Require to use Jquery from node-modules and movies form api.js ==================
 const $ = require('jquery');
 
 const {getMovies} = require('./api.js');
 
+
+// ========================= Main Function that updates builtHtml editMovies and deleteMovies  ===================
 function displayMovies() {
     getMovies().then((movies) => {
         const $loading = $('#loading').hide();
